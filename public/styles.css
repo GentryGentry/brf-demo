@@ -401,3 +401,6 @@ footer { background: var(--navy); color: rgba(255,255,255,.7); padding: 64px 0 3
 .login-back:hover { color: var(--navy); }
 .form-alert { margin: 0; padding: 12px 14px; border-left: 3px solid #b03b3b; background: #faf0f0; color: #7d2626; font-size: 0.95rem; }
 .container.narrow { max-width: 920px; }
+.info-list ul { margin: 6px 0 0; padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7; }
+.info-list li + li { margin-top: 2px; }
+.info-list a { color: var(--navy); border-bottom: 1px solid var(--gold); }

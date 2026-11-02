@@ -44,15 +44,18 @@ den låsta delen med 503. Den öppnas aldrig av misstag.
 
 ## Publicera på Cloudflare Pages
 
-1. Skapa ett Pages-projekt kopplat till GitHub-repot.
-2. Build command: *tomt*. Build output directory: `public`.
-3. Lägg in secrets enligt ovan, deploya.
-4. Först när det fungerar på `*.pages.dev`: peka `demo.danielssongentry.se` mot projektet
-   (Custom domains) och stäng av GitHub Pages i repoinställningarna.
+Så är demon uppsatt (`demo.danielssongentry.se`, DNS hos Hostinger):
 
-> Slå **inte** ihop till `main` så länge GitHub Pages är live. Sajten har flyttats
-> till `public/`, och GitHub Pages skulle då både gå sönder och servera
-> `public/boende/dokument/*` öppet på `/public/boende/dokument/...`.
+1. Pages-projekt `brf-demo` kopplat till GitHub-repot (välj *Pages*, inte Workers; i
+   dashboarden ligger det bakom länken "Continue to Pages").
+2. Build command: *tomt*. Build output directory: `public`. Production branch: `main`.
+3. Secrets `BOENDE_PASSWORD` och `SESSION_SECRET` under *Settings → Variables and
+   Secrets* (Production). Kör *Retry deployment* efter ändring, annars gäller de inte.
+4. Custom domain: *brf-demo → Custom domains → Set up a custom domain*. Hos
+   DNS-leverantören läggs en CNAME `demo` → `brf-demo.pages.dev`.
+5. GitHub Pages är avstängt för repot.
+
+Varje push till `main` bygger och publicerar automatiskt.
 
 ## Begränsningar (medvetna)
 
@@ -60,7 +63,11 @@ den låsta delen med 503. Den öppnas aldrig av misstag.
   Demodokumenten är fiktiva. Riktiga dokument kräver privat repo eller
   separat lagring (t.ex. R2) bakom samma middleware.
 - Skyddet mot gissning är en fast fördröjning (1,5 s) på varje felaktigt försök.
-  Det hindrar inte parallella försök. För skarp drift: lägg en rate limiting-regel
-  i Cloudflare (WAF) på `POST /boende/logga-in` och välj ett långt lösenord.
+  Det hindrar inte parallella försök. Cloudflares WAF-regler för rate limiting
+  kräver att hela domänen ligger hos Cloudflare, vilket den inte gör här (DNS hos
+  Hostinger). För en kund: välj ett långt lösenord och bygg en spärr
+  (t.ex. lås efter fem fel på 15 minuter) med Cloudflare KV, eller flytta DNS.
+- Demon använder enkla värden. Hemligheter som visats i chatt eller dokument
+  återanvänds aldrig åt en kund.
 - Ett gemensamt lösenord kan inte återkallas per person. Byt lösenordet när någon
   flyttar eller lämnar styrelsen.
