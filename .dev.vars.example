@@ -1,0 +1,4 @@
+# Kopiera till .dev.vars (checkas inte in) och byt värden. Endast exempelvärden.
+BOENDE_PASSWORD=byt-mig-till-ett-langt-losenord
+# Minst 32 tecken. Skapa t.ex. med: openssl rand -base64 48
+SESSION_SECRET=byt-mig-exempelvarde-minst-32-tecken-langt

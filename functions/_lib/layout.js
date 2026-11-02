@@ -1,0 +1,92 @@
+// Sidskal för sidor som renderas av servern (inloggningssidan). Samma nav och
+// footer som de statiska sidorna, men med rotrelativa länkar eftersom sidorna
+// ligger under /boende/.
+
+export function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+const HOUSE = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>';
+
+export function renderPage({ title, description = '', crumb, h1, lede, body, noindex = true }) {
+  return `<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+${noindex ? '<meta name="robots" content="noindex, nofollow" />\n' : ''}
+<title>${esc(title)} — Brf Demobacken</title>
+<meta name="description" content="${esc(description)}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="subpage">
+
+<nav class="nav" id="nav" aria-label="Huvudmeny">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="Brf Demobacken — hem">
+      <span class="brand-mark">${HOUSE}</span>
+      <span>Brf Demobacken</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/om" data-nav>Om föreningen</a></li>
+      <li><a href="/nyheter" data-nav>Nyheter</a></li>
+      <li><a href="/boende" data-nav class="active">Boende</a></li>
+      <li><a href="/kopare" data-nav>Köpare &amp; mäklare</a></li>
+      <li><a href="/styrelsen" data-nav>Styrelsen</a></li>
+      <li><a href="/kontakt" data-nav>Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Öppna meny" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <span class="crumb">${crumb}</span>
+    <h1>${h1}</h1>
+    <p class="lede">${lede}</p>
+  </div>
+</header>
+
+${body}
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-mark">${HOUSE}</span><span>Bostadsrättsföreningen Demobacken</span></div>
+        <p>Demovägen 12, 123 45 Demostad<br/>Org.nr 769600–0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>För boende</h4>
+        <ul>
+          <li><a href="/boende/felanmalan">Felanmälan</a></li>
+          <li><a href="/boende/tvattstuga">Boka tvättstuga</a></li>
+          <li><a href="/boende/ordningsregler">Ordningsregler</a></li>
+          <li><a href="/boende/dokument/">Dokument</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Förening</h4>
+        <ul>
+          <li><a href="/om">Om oss</a></li>
+          <li><a href="/styrelsen">Styrelsen</a></li>
+          <li><a href="/kopare">Köpare &amp; mäklare</a></li>
+          <li><a href="/kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Brf Demobacken. Alla rättigheter förbehållna.</span>
+      <span class="built">Hemsida av <a href="https://danielssongentry.se" target="_blank" rel="noopener">Danielsson &amp; Gentry</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
+`;
+}

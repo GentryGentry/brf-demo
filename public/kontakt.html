@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kontakt — Brf Demobacken</title>
+<meta name="description" content="Kontakta styrelsen i Brf Demobacken. Adress, e-post och kontaktformulär." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="subpage">
+
+<nav class="nav" id="nav" aria-label="Huvudmeny">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" aria-label="Brf Demobacken — hem">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+      <span>Brf Demobacken</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="om.html" data-nav>Om föreningen</a></li>
+      <li><a href="nyheter.html" data-nav>Nyheter</a></li>
+      <li><a href="boende.html" data-nav>Boende</a></li>
+      <li><a href="kopare.html" data-nav>Köpare &amp; mäklare</a></li>
+      <li><a href="styrelsen.html" data-nav>Styrelsen</a></li>
+      <li><a href="kontakt.html" data-nav>Kontakt</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Öppna meny" aria-expanded="false"><span></span></button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <span class="crumb"><a href="index.html">Hem</a><span class="sep">/</span><span>Kontakt</span></span>
+    <h1><em>Hör av</em> dig.</h1>
+    <p class="lede">Felanmälan görs via Exempel Förvaltning. För övriga frågor — välkommen att skriva till styrelsen.</p>
+  </div>
+</header>
+
+<section class="first">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-block">
+          <div class="info-label">Adress</div>
+          <div class="info-value">Demovägen 12<br/>123 45 Demostad</div>
+          <div class="info-sub">Postlådan finns i porten till vänster.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">E-post</div>
+          <div class="info-value"><a href="mailto:styrelsen@brfdemobacken.se" style="border-bottom:1px solid var(--rule-strong);">styrelsen@brfdemobacken.se</a></div>
+          <div class="info-sub">Svar inom tre arbetsdagar.</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Felanmälan dygnet runt</div>
+          <div class="info-value">Exempel Förvaltning</div>
+          <div class="info-sub">08–123 45 67 · exempel.se</div>
+        </div>
+        <div class="map" role="img" aria-label="Karta över Demovägen 12">
+          <div class="map-pin">
+            <div class="pin-dot"></div>
+            <div class="pin-label">Demovägen 12</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal delay-1" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Namn</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+            <div class="err" data-err></div>
+          </div>
+          <div class="field">
+            <label for="f-email">E-post</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+            <div class="err" data-err></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-subject">Ämne</label>
+          <input id="f-subject" name="subject" type="text" required />
+          <div class="err" data-err></div>
+        </div>
+        <div class="field">
+          <label for="f-message">Meddelande</label>
+          <textarea id="f-message" name="message" rows="5" required></textarea>
+          <div class="err" data-err></div>
+        </div>
+        <button type="submit" class="btn">Skicka meddelande</button>
+        <div class="form-success" id="formSuccess">
+          Tack för ditt meddelande. Styrelsen återkommer inom kort.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><span class="brand-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span>Bostadsrättsföreningen Demobacken</span></div>
+        <p>Demovägen 12, 123 45 Demostad<br/>Org.nr 769600–0000</p>
+      </div>
+      <div class="footer-col">
+        <h4>För boende</h4>
+        <ul>
+          <li><a href="/boende/felanmalan">Felanmälan</a></li>
+          <li><a href="/boende/tvattstuga">Boka tvättstuga</a></li>
+          <li><a href="/boende/ordningsregler">Ordningsregler</a></li>
+          <li><a href="/boende/dokument/">Dokument</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Förening</h4>
+        <ul>
+          <li><a href="om.html">Om oss</a></li>
+          <li><a href="styrelsen.html">Styrelsen</a></li>
+          <li><a href="kopare.html">Köpare &amp; mäklare</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Brf Demobacken. Alla rättigheter förbehållna.</span>
+      <span class="built">Hemsida av <a href="https://danielssongentry.se" target="_blank" rel="noopener">Danielsson &amp; Gentry</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
